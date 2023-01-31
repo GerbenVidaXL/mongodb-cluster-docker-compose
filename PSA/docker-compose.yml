@@ -10,14 +10,14 @@ services:
       - 27117:27017
     volumes:
       - /docker_qas_nfs/mongodb_cluster/mongodb-cluster-docker-compose/PSA/scripts:/scripts
-      - /docker_qas_nfs/mongodb_cluster/shards/router-01/data:/data
+      - /docker_qas_nfs/mongodb_cluster/shards/router01/data:/data
   router02:
     image: mongo:6.0.1
     container_name: router-02
     command: mongos --port 27017 --configdb rs-config-server/configsvr01:27017,configsvr02:27017,configsvr03:27017 --bind_ip_all
     volumes:
       - /docker_qas_nfs/mongodb_cluster/mongodb-cluster-docker-compose/PSA/scripts:/scripts
-      - /docker_qas_nfs/mongodb_cluster/shards/router-02/data:/data
+      - /docker_qas_nfs/mongodb_cluster/shards/router02/data:/data
     ports:
       - 27118:27017
     links:
