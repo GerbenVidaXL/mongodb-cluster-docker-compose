@@ -7,7 +7,7 @@ services:
     container_name: router-01
     command: mongos --port 27017 --configdb rs-config-server/configsvr01:27017,configsvr02:27017,configsvr03:27017 --bind_ip_all
     ports:
-      - 27117:27017
+      - 27217:27017
     volumes:
       - /docker_qas_nfs/mongodb_cluster/mongodb-cluster-docker-compose/PSA/scripts:/scripts
       - /docker_qas_nfs/mongodb_cluster/shards/router01/data:/data
@@ -19,7 +19,7 @@ services:
       - /docker_qas_nfs/mongodb_cluster/mongodb-cluster-docker-compose/PSA/scripts:/scripts
       - /docker_qas_nfs/mongodb_cluster/shards/router02/data:/data
     ports:
-      - 27118:27017
+      - 27218:27017
     links:
       - router01
 
@@ -32,7 +32,7 @@ services:
       - /docker_qas_nfs/mongodb_cluster/mongodb-cluster-docker-compose/PSA/scripts:/scripts
       - /docker_qas_nfs/mongodb_cluster/shards/configsvr01/data:/data
     ports:
-      - 27119:27017
+      - 27219:27017
     links:
       - shard01-a
       - shard02-a
@@ -45,7 +45,7 @@ services:
       - /docker_qas_nfs/mongodb_cluster/mongodb-cluster-docker-compose/PSA/scripts:/scripts
       - /docker_qas_nfs/mongodb_cluster/shards/configsvr02/data:/data
     ports:
-      - 27120:27017
+      - 27220:27017
     links:
       - configsvr01
   configsvr03:
@@ -56,7 +56,7 @@ services:
       - /docker_qas_nfs/mongodb_cluster/mongodb-cluster-docker-compose/PSA/scripts:/scripts
       - /docker_qas_nfs/mongodb_cluster/shards/configsvr03/data:/data
     ports:
-      - 27121:27017
+      - 27221:27017
     links:
       - configsvr02
 
@@ -70,7 +70,7 @@ services:
       - /docker_qas_nfs/mongodb_cluster/mongodb-cluster-docker-compose/PSA/scripts:/scripts
       - /docker_qas_nfs/mongodb_cluster/shards/shard01-x/data:/data
     ports:
-      - 27122:27017
+      - 27222:27017
     links:
       - shard01-a
       - shard01-b
@@ -82,7 +82,7 @@ services:
       - /docker_qas_nfs/mongodb_cluster/mongodb-cluster-docker-compose/PSA/scripts:/scripts
       - /docker_qas_nfs/mongodb_cluster/shards/shard01-a/data:/data
     ports:
-      - 27123:27017
+      - 27223:27017
   shard01-b:
     image: mongo:3.4.24
     container_name: shard-01-node-b
@@ -91,7 +91,7 @@ services:
       - /docker_qas_nfs/mongodb_cluster/mongodb-cluster-docker-compose/PSA/scripts:/scripts
       - /docker_qas_nfs/mongodb_cluster/shards/shard01-b/data:/data
     ports:
-      - 27124:27017
+      - 27224:27017
 
   ## Shards 02
   shard02-x:
@@ -102,7 +102,7 @@ services:
       - /docker_qas_nfs/mongodb_cluster/mongodb-cluster-docker-compose/PSA/scripts:/scripts
       - /docker_qas_nfs/mongodb_cluster/shards/shard02-x/data:/data
     ports:
-      - 27125:27017
+      - 27225:27017
     links:
       - shard02-a
       - shard02-b
@@ -114,7 +114,7 @@ services:
       - /docker_qas_nfs/mongodb_cluster/mongodb-cluster-docker-compose/PSA/scripts:/scripts
       - /docker_qas_nfs/mongodb_cluster/shards/shard02-a/data:/data
     ports:
-      - 27126:27017
+      - 27226:27017
   shard02-b:
     image: mongo:3.4.24
     container_name: shard-02-node-b
@@ -123,7 +123,7 @@ services:
       - /docker_qas_nfs/mongodb_cluster/mongodb-cluster-docker-compose/PSA/scripts:/scripts
       - /docker_qas_nfs/mongodb_cluster/shards/shard02-b/data:/data
     ports:
-      - 27127:27017
+      - 27227:27017
 
   ## Shards 03
   shard03-x:
@@ -134,7 +134,7 @@ services:
       - /docker_qas_nfs/mongodb_cluster/mongodb-cluster-docker-compose/PSA/scripts:/scripts
       - /docker_qas_nfs/mongodb_cluster/shards/shard03-x/data:/data
     ports:
-      - 27128:27017
+      - 27228:27017
     links:
       - shard03-a
       - shard03-b
@@ -146,7 +146,7 @@ services:
       - /docker_qas_nfs/mongodb_cluster/mongodb-cluster-docker-compose/PSA/scripts:/scripts
       - /docker_qas_nfs/mongodb_cluster/shards/shard03-a/data:/data
     ports:
-      - 27129:27017
+      - 27229:27017
   shard03-b:
     image: mongo:3.4.24
     container_name: shard-03-node-b
@@ -155,6 +155,6 @@ services:
       - /docker_qas_nfs/mongodb_cluster/mongodb-cluster-docker-compose/PSA/scripts:/scripts
       - /docker_qas_nfs/mongodb_cluster/shards/shard03-b/data:/data
     ports:
-      - 27130:27017
+      - 27230:27017
 
   
