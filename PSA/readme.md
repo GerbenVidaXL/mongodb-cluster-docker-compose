@@ -18,14 +18,16 @@ docker compose file: /PSA/docker-compose.yml
 ```
 
 - **step 3:**
-```./execute-cmds-script mongo_shard01-a bash -c "echo 'rs.addArb(\""mongo_shard01-x:27017\"")' | mongosh --port 27017"
+```
+./execute-cmds-script mongo_shard01-a bash -c "echo 'rs.addArb(\""mongo_shard01-x:27017\"")' | mongosh --port 27017"
 ./execute-cmds-script mongo_shard02-a bash -c "echo 'rs.addArb(\""mongo_shard02-x:27017\"")' | mongosh --port 27017"
 ./execute-cmds-script mongo_shard03-a bash -c "echo 'rs.addArb(\""mongo_shard03-x:27017\"")' | mongosh --port 27017"
 ```
 
 - **step 4:**
 edit defaultWriteConcern
-```./execute-cmds-script mongo_router01 mongosh --eval "printjson(db.adminCommand({"setDefaultRWConcern": 1, "defaultWriteConcern" : {"w" : 2}}))"
+```
+./execute-cmds-script mongo_router01 mongosh --eval "printjson(db.adminCommand({"setDefaultRWConcern": 1, "defaultWriteConcern" : {"w" : 2}}))"
 
 ./execute-cmds-script mongo_router01 sh -c "mongosh < /scripts/init-router.js"
 ```
@@ -33,7 +35,8 @@ edit defaultWriteConcern
 - **step 5:**
 old qas does not have sharding enabled. so not directly needed?
 
-```docker-compose exec mongo_router01 mongosh --port 27017
+```
+docker-compose exec mongo_router01 mongosh --port 27017
 
 // Enable sharding for database `MyDatabase`
 sh.enableSharding("MyDatabase")
