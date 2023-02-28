@@ -44,6 +44,8 @@ sh.enableSharding("MyDatabase")
 db.adminCommand( { shardCollection: "MyDatabase.MyCollection", key: { supplierId: "hashed" } } )
 ```
 
+## ORIGINAL DOCUMENTATION
+
 Demo Mongo Sharded Cluster with Docker Compose
 =========================================
 
