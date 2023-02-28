@@ -1,6 +1,6 @@
 ADAPTION FOR LOWER VERSION (VIDAXL USAGE)
 
-- **step 1:**
+- **step 1: Start all of the containers**
 
 in portainer deploy from git (or change this ofcourse and copy into bitbucket):
 https://github.com/GerbenVidaXL/mongodb-cluster-docker-compose
@@ -9,7 +9,7 @@ following example commands assume that the stack is named "mongo" this wil resul
 
 docker compose file: /PSA/docker-compose.yml
 
-- **step 2:** 
+- **step 2: Initialize the replica sets (config servers and shards) and routers** 
 ```
 ./execute-cmds-script mongo_configsvr01 sh -c "mongosh < /scripts/init-configserver.js"
 ./execute-cmds-script mongo_shard01-a sh -c "mongosh < /scripts/init-shard01.js"
@@ -17,22 +17,21 @@ docker compose file: /PSA/docker-compose.yml
 ./execute-cmds-script mongo_shard03-a sh -c "mongosh < /scripts/init-shard03.js"
 ```
 
-- **step 3:**
+- **step 3: Connect to the primary and add arbiters**
 ```
 ./execute-cmds-script mongo_shard01-a bash -c "echo 'rs.addArb(\""mongo_shard01-x:27017\"")' | mongosh --port 27017"
 ./execute-cmds-script mongo_shard02-a bash -c "echo 'rs.addArb(\""mongo_shard02-x:27017\"")' | mongosh --port 27017"
 ./execute-cmds-script mongo_shard03-a bash -c "echo 'rs.addArb(\""mongo_shard03-x:27017\"")' | mongosh --port 27017"
 ```
 
-- **step 4:**
-edit defaultWriteConcern
+- **step 4: edit defaultWriteConcern + init router**
 ```
 ./execute-cmds-script mongo_router01 mongosh --eval "printjson(db.adminCommand({"setDefaultRWConcern": 1, "defaultWriteConcern" : {"w" : 2}}))"
 
 ./execute-cmds-script mongo_router01 sh -c "mongosh < /scripts/init-router.js"
 ```
 
-- **step 5:**
+- **step 5: Enable sharding and setup sharding-key**
 old qas does not have sharding enabled. so not directly needed?
 
 ```
