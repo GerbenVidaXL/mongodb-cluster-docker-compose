@@ -1,4 +1,4 @@
-ADAPTION FOR LOWER VERSION (VIDAXL USAGE)
+## ADAPTION FOR LOWER VERSION (VIDAXL USAGE)
 
 - **step 1: Start all of the containers**
 
