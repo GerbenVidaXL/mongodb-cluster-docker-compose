@@ -3,8 +3,9 @@ ADAPTION FOR LOWER VERSION (VIDAXL USAGE)
 - **step 1:**
 
 in portainer deploy from git (or change this ofcourse and copy into bitbucket):
-following example commands assume that the stack is named "mongo" this wil result in the names used in the commands (ie. mongo_shard01-a)
 https://github.com/GerbenVidaXL/mongodb-cluster-docker-compose
+
+following example commands assume that the stack is named "mongo" this wil result in the names used in the commands (ie. mongo_shard01-a)
 
 docker compose file: /PSA/docker-compose.yml
 
