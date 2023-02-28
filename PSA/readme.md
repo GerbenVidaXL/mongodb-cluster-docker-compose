@@ -10,7 +10,8 @@ following example commands assume that the stack is named "mongo" this wil resul
 docker compose file: /PSA/docker-compose.yml
 
 - **step 2:** 
-```./execute-cmds-script mongo_configsvr01 sh -c "mongosh < /scripts/init-configserver.js"
+```
+./execute-cmds-script mongo_configsvr01 sh -c "mongosh < /scripts/init-configserver.js"
 ./execute-cmds-script mongo_shard01-a sh -c "mongosh < /scripts/init-shard01.js"
 ./execute-cmds-script mongo_shard02-a sh -c "mongosh < /scripts/init-shard02.js"
 ./execute-cmds-script mongo_shard03-a sh -c "mongosh < /scripts/init-shard03.js"
